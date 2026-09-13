@@ -9,7 +9,7 @@ import { WorkspaceSection } from '@/components/sections/WorkspaceSection';
 import { TopologySection } from '@/components/sections/TopologySection';
 import { IsolationSection } from '@/components/sections/IsolationSection';
 import { AuditSection } from '@/components/sections/AuditSection';
-import { WorkbenchV2 } from '@/components/workbench/WorkbenchV2';
+import { WorkbenchV3 } from '@/components/workbench/WorkbenchV3';
 
 function App() {
   const [workbenchOpen, setWorkbenchOpen] = useState(false);
@@ -44,7 +44,7 @@ function App() {
       </main>
       <Footer />
       {!workbenchOpen && <motion.button initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.5 }} onClick={openWorkbench} className="fixed bottom-6 right-6 z-40 flex items-center gap-3 rounded-full border border-cyan-300/30 bg-[#081114]/90 px-5 py-3 text-xs font-semibold tracking-wide text-cyan-100 shadow-[0_12px_50px_rgba(0,0,0,.45)] backdrop-blur-xl transition hover:border-cyan-300/50 hover:bg-[#0b171b]">Test HRIDAY <ArrowRight size={14} /></motion.button>}
-      <AnimatePresence>{workbenchOpen && <WorkbenchV2 onExit={closeWorkbench} />}</AnimatePresence>
+      <AnimatePresence>{workbenchOpen && <WorkbenchV3 onExit={closeWorkbench} />}</AnimatePresence>
     </div>
   );
 }
