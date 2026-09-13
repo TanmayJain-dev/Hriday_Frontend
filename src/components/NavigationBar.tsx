@@ -29,43 +29,27 @@ export function NavigationBar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        {/* Logo */}
         <a href="#hero" className="flex items-center gap-3">
           <div className="flex h-8 w-8 items-center justify-center rounded-md border border-[hsl(185_85%_50%_/_0.3)] bg-[hsl(185_85%_50%_/_0.05)]">
-            <span className="font-mono text-sm font-bold text-[hsl(185_85%_50%)]">
-              H
-            </span>
+            <span className="font-mono text-sm font-bold text-[hsl(185_85%_50%)]">H</span>
           </div>
           <div className="flex flex-col leading-none">
-            <span className="text-sm font-semibold tracking-wide text-white">
-              HRIDAY
-            </span>
-            <span className="font-mono text-[9px] tracking-wider text-muted-foreground uppercase">
-              Sovereign Intelligence
-            </span>
+            <span className="text-sm font-semibold tracking-wide text-white">HRIDAY</span>
+            <span className="font-mono text-[9px] tracking-wider text-muted-foreground uppercase">Sovereign Intelligence</span>
           </div>
         </a>
 
-        {/* Nav links */}
         <div className="hidden items-center gap-8 md:flex">
           {NAV_ITEMS.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="font-mono text-xs tracking-wide text-muted-foreground transition-colors hover:text-white"
-            >
+            <a key={item.label} href={item.href} className="font-mono text-xs tracking-wide text-muted-foreground transition-colors hover:text-white">
               {item.label}
             </a>
           ))}
         </div>
 
-        {/* Status indicator */}
-        <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-[hsl(160_70%_42%)] animate-pulse" />
-          <span className="font-mono text-[10px] tracking-wider text-muted-foreground uppercase">
-            System Active
-          </span>
-        </div>
+        <a href="#workbench" className="flex items-center gap-2 rounded-md border border-[hsl(185_85%_50%_/_0.35)] bg-[hsl(185_85%_50%_/_0.06)] px-3 py-2 font-mono text-[10px] tracking-wider text-cyan-100 uppercase transition hover:border-[hsl(185_85%_50%_/_0.6)] hover:bg-[hsl(185_85%_50%_/_0.1)]">
+          Test HRIDAY
+        </a>
       </div>
     </motion.nav>
   );
