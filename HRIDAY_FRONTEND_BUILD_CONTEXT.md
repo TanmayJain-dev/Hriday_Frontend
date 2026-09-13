@@ -10,15 +10,17 @@ Version 1 was a cinematic sequential product-story page. Version 2 now has a rea
 The agent decides what work needs to happen. Specialized tools perform the work. Structured engineering data establishes technical truth. Evidence explains the result. Humans make the final decision.
 
 ## Current Version 2 implementation
-- `src/components/workbench/WorkbenchV2.tsx`: contextual workbench with conversation, agent activity, workspace navigation and responsive layouts.
+- `src/components/workbench/WorkbenchV2.tsx`: contextual workbench with conversation, operational agent state, workspace navigation, responsive layouts and asset inspection.
 - Workspaces: Engineering, P&ID, Topology, Documents, Data, Evidence, Artifact.
-- P&ID: selectable synthetic assets, explicit demo boundary, viewport controls.
-- Topology: selectable nodes, accepted/uncertain edge visualization, read-only GraphStore framing.
-- Evidence: typed findings table with confidence and review state.
-- Artifact: draft isolation-summary surface with human-review warning.
-- Documents/Data: local-first demo surfaces.
+- P&ID: selectable synthetic assets, explicit demo boundary, working zoom/reset controls and selected-asset inspector.
+- Topology: selectable nodes, accepted/uncertain edge visualization, read-only GraphStore framing and selected-node inspector.
+- Evidence: typed findings table with confidence and review state, responsive mobile layout.
+- Artifact: draft isolation-summary surface with human-review warning; backend export is intentionally not simulated.
+- Documents/Data: local-first demo surfaces with explicit demo corpus framing.
 - Cmd/Ctrl+K command palette supports navigation and task execution.
 - Agent loop UI exposes operational stages only, never hidden chain-of-thought.
+- Agent state is explicit: ready, running, complete, or blocked; blocked tasks do not silently fall back to demo output.
+- Mobile workspace navigation is provided as a bottom switcher while desktop retains the full workspace grid.
 - `src/adapters/types.ts`: typed adapter contract.
 - `src/adapters/demo/demoAdapter.ts`: deterministic, explicit demo adapter.
 - `src/adapters/backend/backendAdapter.ts`: production boundary with no invented API routes.
@@ -65,8 +67,8 @@ Dark industrial engineering workstation + aerospace mission control + Apple-leve
 8. Command palette — COMPLETE
 9. Explicit demo/backend adapter boundary — COMPLETE
 10. Story → Workbench integration — COMPLETE
-11. Responsive/mobile behavior — IN PROGRESS
-12. Accessibility/polish/performance — NEXT
+11. Responsive/mobile behavior — COMPLETE (baseline)
+12. Accessibility/polish/performance — IN PROGRESS
 13. Backend wiring — BLOCKED until the real backend API contract is confirmed; do not invent routes.
 
 ## Important limitation
@@ -76,4 +78,4 @@ The workbench is still a frontend product/demo layer and is not yet connected to
 After each stable milestone: typecheck/build where possible, commit, and push to `origin/main`. If local runtime is unavailable, rely on GitHub Actions/Agy for verification and record that limitation here.
 
 ## Next implementation step
-Finish responsive/mobile interaction and visual polish, then inspect GitHub Actions. After the frontend is coherent and stable, hand it to Agy for independent testing/review. Backend integration begins only from a verified backend contract.
+Complete accessibility/performance polish and verify GitHub Actions. After the frontend is coherent and stable, hand it to Agy for independent testing/review. Backend integration begins only from a verified backend contract.
