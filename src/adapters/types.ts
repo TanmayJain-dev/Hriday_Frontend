@@ -1,4 +1,4 @@
-export type WorkspaceId = 'engineering' | 'pid' | 'topology' | 'document' | 'data' | 'evidence' | 'artifact';
+export type WorkspaceId = 'engineering' | 'pid' | 'topology' | 'document' | 'data' | 'evidence' | 'artifact' | 'verification' | 'isolation';
 
 export type AgentStep = {
   id: string;
