@@ -4,25 +4,28 @@
 HRIDAY is a Sovereign Industrial AI Workbench for SIH26117. The broader product is a local-first multimodal agent/workbench for confidential industrial knowledge work. Deterministic Brownfield P&ID and maintenance intelligence is a flagship specialist capability, not the entire product.
 
 ## Current state
-This repository started as Version 1: a cinematic sequential product-story page containing Hero, Pipeline, Workspace, Topology, Isolation, and Audit sections. Existing P&ID/topology content is demo data and must never be mistaken for live backend truth.
-
-## Version 2 target
-Two-layer experience:
-1. Product Story — cinematic, editorial, industrial, explains the problem and architecture.
-2. Workbench — actual interactive product shell entered through "Test HRIDAY".
+Version 1 was a cinematic sequential product-story page. Version 2 now has a real workbench route/overlay entered through `Test HRIDAY`.
 
 ## Workbench principle
 The agent decides what work needs to happen. Specialized tools perform the work. Structured engineering data establishes technical truth. Evidence explains the result. Humans make the final decision.
 
-## Target workbench
-- persistent top bar with HRIDAY identity, global command/search, sovereignty status
-- left conversation panel: user task, assistant response, operational activity trace
-- right workspace canvas with contextual workspace tiles
-- workspace types: Engineering, P&ID, Topology, Document, Data, Evidence, Artifact
-- tiles expand into primary interactive views
-- manual exploration must work without chat
-- Cmd/Ctrl+K opens global search/command palette; navigation queries search, task queries launch HRIDAY
-- agent activity shows only operational steps, never chain-of-thought
+## Current Version 2 implementation
+- `src/components/workbench/WorkbenchV2.tsx`: contextual workbench with conversation, agent activity, workspace navigation and responsive layouts.
+- Workspaces: Engineering, P&ID, Topology, Documents, Data, Evidence, Artifact.
+- P&ID: selectable synthetic assets, explicit demo boundary, viewport controls.
+- Topology: selectable nodes, accepted/uncertain edge visualization, read-only GraphStore framing.
+- Evidence: typed findings table with confidence and review state.
+- Artifact: draft isolation-summary surface with human-review warning.
+- Documents/Data: local-first demo surfaces.
+- Cmd/Ctrl+K command palette supports navigation and task execution.
+- Agent loop UI exposes operational stages only, never hidden chain-of-thought.
+- `src/adapters/types.ts`: typed adapter contract.
+- `src/adapters/demo/demoAdapter.ts`: deterministic, explicit demo adapter.
+- `src/adapters/backend/backendAdapter.ts`: production boundary with no invented API routes.
+- `src/adapters/index.ts`: explicit adapter selector; no silent production→demo fallback.
+- `App.tsx`: now mounts `WorkbenchV2`.
+- `NavigationBar.tsx`: Test HRIDAY entry.
+- `.github/workflows/frontend.yml`: npm CI typecheck/build workflow.
 
 ## Engineering truth boundary
 LLM is an untrusted planner/reasoner. It must not be presented as the source of piping connectivity or engineering truth. P&ID perception feeds governed topology reconstruction; specialized tools query structured engineering data; evidence records explain claims.
@@ -31,10 +34,10 @@ LLM is an untrusted planner/reasoner. It must not be presented as the source of 
 HRIDAY is read-only decision support. No valve actuation, DCS/SCADA writes, or industrial control operations. Human engineers retain final authorization. Do not claim production certification, zero hallucinations, 100% accuracy, guaranteed air-gapping, or autonomous LOTO.
 
 ## Sovereignty UX
-Local deployment can be represented as sovereign/local. Cloud-hosted preview must visibly state that it is a demo/cloud instance and is not physically air-gapped. Application-level controls do not equal host/network air-gapping.
+Cloud-hosted preview must visibly state that it is a demo/cloud instance and is not physically air-gapped. Application-level controls do not equal host/network air-gapping.
 
 ## Demo data boundary
-Existing `src/data/pid-data.ts` is legacy visual/demo data. Any demo adapter must be explicitly named and isolated. Never silently pass fixture topology as if it were a real upload or backend result.
+Legacy `src/data/pid-data.ts` and synthetic workbench data are visual/demo content only. Demo content must remain explicitly labeled and isolated from production adapter paths.
 
 ## Backend concepts available for later integration
 - document ingestion
@@ -49,34 +52,28 @@ Existing `src/data/pid-data.ts` is legacy visual/demo data. Any demo adapter mus
 Frontend should use adapter interfaces rather than inventing production APIs.
 
 ## Visual direction
-Dark industrial engineering workstation + aerospace mission control + Apple-level cleanliness. Use restraint, dense information only where useful, strong typography, subtle grid/scan/flow motion, cyan/teal accents, progressive disclosure. Avoid generic SaaS dashboard aesthetics and fake KPI cards.
+Dark industrial engineering workstation + aerospace mission control + Apple-level cleanliness. Strong typography, restrained cyan/teal accents, useful density, subtle motion. Avoid generic SaaS dashboards and fake KPI cards.
 
 ## Implementation priority
 1. Workbench shell — COMPLETE
-2. Conversation + operational activity — COMPLETE (demo state machine)
-3. Contextual workspace system — COMPLETE (Engineering/P&ID/Topology/Document/Data/Evidence/Artifact)
-4. P&ID interaction — COMPLETE (selection + viewport controls in demo surface)
-5. Topology interaction — COMPLETE (interactive workspace surface)
+2. Conversation + operational activity — COMPLETE
+3. Contextual workspace system — COMPLETE
+4. P&ID interaction — COMPLETE (demo surface)
+5. Topology interaction — COMPLETE (demo surface)
 6. Evidence explorer — COMPLETE
 7. Document/artifact/data workspaces — COMPLETE (demo surfaces)
-8. Command palette — COMPLETE (Cmd/Ctrl+K + natural-language demo routing)
-9. Demo adapter and deterministic demo flows — IN PROGRESS; must isolate legacy demo data and add adapter contracts
-10. Story → Workbench integration — COMPLETE (Test HRIDAY navigation + #workbench mode)
-11. polish/accessibility/performance — NEXT
-
-## Implemented in Version 2 so far
-- `src/components/workbench/HRIDAYWorkbench.tsx`: full-screen product workbench with conversation, activity trace, contextual workspace dock, P&ID, topology, evidence, document, data, and artifact surfaces.
-- Cmd/Ctrl+K command palette with navigation/task routing.
-- deterministic P-101 demonstration flow with explicit uncertainty/review language.
-- visible synthetic/demo P&ID label to prevent benchmark data being mistaken for live engineering evidence.
-- `App.tsx`: workbench overlay and shareable `#workbench` mode.
-- `NavigationBar.tsx`: direct Test HRIDAY entry.
+8. Command palette — COMPLETE
+9. Explicit demo/backend adapter boundary — COMPLETE
+10. Story → Workbench integration — COMPLETE
+11. Responsive/mobile behavior — IN PROGRESS
+12. Accessibility/polish/performance — NEXT
+13. Backend wiring — BLOCKED until the real backend API contract is confirmed; do not invent routes.
 
 ## Important limitation
-The current workbench is a frontend product/demo layer, not yet connected to the HRIDAY backend. Demo data is intentionally visible. Do not present the frontend simulation as live OCR, live topology reconstruction, live local-model inference, or authoritative engineering output.
+The workbench is still a frontend product/demo layer and is not yet connected to the HRIDAY backend. Do not present its synthetic P&ID, topology, evidence, or artifact as live OCR, live topology reconstruction, live local-model inference, or authoritative engineering output.
 
 ## Save protocol
-After each stable milestone: typecheck/build where possible, commit, and push to `origin/main`. Update this file with the latest completed milestone and next step. If interrupted, leave the repository in a buildable state and record continuation instructions here.
+After each stable milestone: typecheck/build where possible, commit, and push to `origin/main`. If local runtime is unavailable, rely on GitHub Actions/Agy for verification and record that limitation here.
 
 ## Next implementation step
-Refactor demo state into an explicit `src/adapters/demo/` boundary, then add typed backend adapter interfaces without inventing endpoints. After that, polish the workbench visual hierarchy, mobile behavior, accessibility, and motion.
+Finish responsive/mobile interaction and visual polish, then inspect GitHub Actions. After the frontend is coherent and stable, hand it to Agy for independent testing/review. Backend integration begins only from a verified backend contract.
