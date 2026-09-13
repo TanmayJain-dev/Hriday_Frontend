@@ -23,6 +23,11 @@ export type WorkbenchTaskResult = {
   demo: boolean;
 };
 
+export type AdapterError = {
+  code: 'BACKEND_NOT_CONNECTED' | 'TASK_UNSUPPORTED' | 'UNAVAILABLE';
+  message: string;
+};
+
 export interface HRIDAYAdapter {
   runTask(task: string): Promise<WorkbenchTaskResult>;
   getEvidence(assetId: string): Promise<EngineeringFinding[]>;
