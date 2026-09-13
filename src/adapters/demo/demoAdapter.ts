@@ -1,4 +1,4 @@
-import type { EngineeringFinding, HRIDAYAdapter, WorkbenchTaskResult } from '../types';
+import type { EngineeringFinding, HRIDAYAdapter } from '../types';
 
 const findings: EngineeringFinding[] = [
   { assetId: 'P-101', claim: 'P-101 identified as pump', source: 'P&ID · page 1 · region 43,37', confidence: 0.9, reviewState: 'observed' },
@@ -12,7 +12,7 @@ export const demoAdapter: HRIDAYAdapter = {
     return {
       taskId: `demo-${Date.now()}`,
       summary: `Demo result for: ${task}`,
-      workspace: /p&?id|pid|pump|isola/i.test(task) ? 'engineering' : 'evidence',
+      workspace: /p&id|pid|pump|isola/i.test(task) ? 'engineering' : 'evidence',
       steps: [
         { id: 'task', label: 'Task received', status: 'complete' },
         { id: 'tool', label: 'Engineering Tool activated', status: 'complete' },
@@ -25,7 +25,6 @@ export const demoAdapter: HRIDAYAdapter = {
   },
 
   async getEvidence(assetId) {
-    await Promise.resolve();
     return findings.filter((finding) => finding.assetId === assetId);
   },
 };
