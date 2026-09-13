@@ -52,17 +52,31 @@ Frontend should use adapter interfaces rather than inventing production APIs.
 Dark industrial engineering workstation + aerospace mission control + Apple-level cleanliness. Use restraint, dense information only where useful, strong typography, subtle grid/scan/flow motion, cyan/teal accents, progressive disclosure. Avoid generic SaaS dashboard aesthetics and fake KPI cards.
 
 ## Implementation priority
-1. Workbench shell
-2. Conversation + operational activity
-3. Contextual workspace system
-4. P&ID interaction
-5. Topology interaction
-6. Evidence explorer
-7. Document/artifact/data workspaces
-8. Command palette
-9. Demo adapter and deterministic demo flows
-10. Story → Workbench integration
-11. polish/accessibility/performance
+1. Workbench shell — COMPLETE
+2. Conversation + operational activity — COMPLETE (demo state machine)
+3. Contextual workspace system — COMPLETE (Engineering/P&ID/Topology/Document/Data/Evidence/Artifact)
+4. P&ID interaction — COMPLETE (selection + viewport controls in demo surface)
+5. Topology interaction — COMPLETE (interactive workspace surface)
+6. Evidence explorer — COMPLETE
+7. Document/artifact/data workspaces — COMPLETE (demo surfaces)
+8. Command palette — COMPLETE (Cmd/Ctrl+K + natural-language demo routing)
+9. Demo adapter and deterministic demo flows — IN PROGRESS; must isolate legacy demo data and add adapter contracts
+10. Story → Workbench integration — COMPLETE (Test HRIDAY navigation + #workbench mode)
+11. polish/accessibility/performance — NEXT
+
+## Implemented in Version 2 so far
+- `src/components/workbench/HRIDAYWorkbench.tsx`: full-screen product workbench with conversation, activity trace, contextual workspace dock, P&ID, topology, evidence, document, data, and artifact surfaces.
+- Cmd/Ctrl+K command palette with navigation/task routing.
+- deterministic P-101 demonstration flow with explicit uncertainty/review language.
+- visible synthetic/demo P&ID label to prevent benchmark data being mistaken for live engineering evidence.
+- `App.tsx`: workbench overlay and shareable `#workbench` mode.
+- `NavigationBar.tsx`: direct Test HRIDAY entry.
+
+## Important limitation
+The current workbench is a frontend product/demo layer, not yet connected to the HRIDAY backend. Demo data is intentionally visible. Do not present the frontend simulation as live OCR, live topology reconstruction, live local-model inference, or authoritative engineering output.
 
 ## Save protocol
 After each stable milestone: typecheck/build where possible, commit, and push to `origin/main`. Update this file with the latest completed milestone and next step. If interrupted, leave the repository in a buildable state and record continuation instructions here.
+
+## Next implementation step
+Refactor demo state into an explicit `src/adapters/demo/` boundary, then add typed backend adapter interfaces without inventing endpoints. After that, polish the workbench visual hierarchy, mobile behavior, accessibility, and motion.
