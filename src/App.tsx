@@ -19,11 +19,11 @@ function App() {
   const isInvalidMode = !isBackendMode && !isDemoMode;
 
   useEffect(() => {
-    const syncHash = () => setWorkbenchOpen(window.location.hash === '#workbench');
+    const syncHash = () => setWorkbenchOpen(window.location.hash === '#workbench' && !isInvalidMode);
     syncHash();
     window.addEventListener('hashchange', syncHash);
     return () => window.removeEventListener('hashchange', syncHash);
-  }, []);
+  }, [isInvalidMode]);
 
   const openWorkbench = () => {
     if (isInvalidMode) return;
