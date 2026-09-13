@@ -11,9 +11,11 @@ The frontend has two layers:
 
 ### Workspaces
 
-Engineering · P&ID · Topology · Documents · Data · Evidence · Artifact
+Engineering · P&ID · Topology · Documents · Data · Evidence · Verification · Isolation · Artifact
 
-The workbench supports explicit demo data for UI evaluation and an isolated production-adapter boundary for later backend integration.
+The workbench follows a judge-friendly investigation path: **Mission → Reason → P&ID → Graph → Evidence → Verify → Isolation → Deliver**. Agent tasks can route into the relevant specialist workspace, while users can also navigate directly through the workflow.
+
+The P&ID and topology surfaces provide interactive demo inspection: pan/zoom/fit, selectable assets, uncertainty visibility, deterministic graph layouts, path highlighting and read-only inspectors. Verification is an explicit human gate; isolation is decision support only.
 
 ## Safety and truth boundary
 
