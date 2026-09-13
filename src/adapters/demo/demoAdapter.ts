@@ -8,9 +8,11 @@ const findings: EngineeringFinding[] = [
 
 function routeTask(task: string): WorkspaceId {
   const value = task.toLowerCase();
+  if (/verify|verification|review finding|human review/.test(value)) return 'verification';
+  if (/isolat|loto|de-energ|lockout|tagout/.test(value)) return 'isolation';
   if (/p&id|pid|drawing|visual/.test(value)) return 'pid';
   if (/topology|connect|path|graph/.test(value)) return 'topology';
-  if (/evidence|source|provenance|verify/.test(value)) return 'evidence';
+  if (/evidence|source|provenance/.test(value)) return 'evidence';
   if (/document|sop|report|approval note/.test(value)) return 'document';
   if (/data|csv|table|trend/.test(value)) return 'data';
   if (/artifact|deliver|export|docx|xlsx|pptx/.test(value)) return 'artifact';
