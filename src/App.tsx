@@ -66,11 +66,11 @@ function App() {
         <div className="fixed left-1/2 top-3 z-[70] -translate-x-1/2">
           <div className={`flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[9px] uppercase tracking-[.14em] shadow-2xl backdrop-blur-xl ${
             isBackendMode
-              ? 'border-emerald-400/20 bg-emerald-950/80 text-emerald-200'
+              ? 'border-amber-300/25 bg-amber-950/80 text-amber-200'
               : 'border-amber-300/25 bg-amber-950/80 text-amber-200'
           }`}>
-            {isBackendMode ? <ShieldCheck size={12} /> : <ShieldAlert size={12} />}
-            {isBackendMode ? 'Backend adapter · deployment boundary active' : 'Demo adapter · synthetic data · not air-gapped'}
+            {isBackendMode ? <ShieldAlert size={12} /> : <ShieldAlert size={12} />}
+            {isBackendMode ? 'Backend adapter · integration contract pending' : 'Demo adapter · synthetic data · not air-gapped'}
           </div>
         </div>
       )}
