@@ -1,6 +1,27 @@
-# HRIDAY Frontend
+# HRIDAY Frontend — Sovereign Industrial AI Workbench
 
-HRIDAY is a **Sovereign Industrial AI Workbench** for SIH26117. The product is designed as a local-first multimodal workbench for confidential industrial knowledge work, with deterministic Brownfield P&ID and maintenance intelligence as a flagship specialist capability.
+<p align="center">
+  <a href="https://frontend-swart-five-99.vercel.app"><img src="https://img.shields.io/badge/Live%20Demo-frontend--swart--five--99.vercel.app-2563eb?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" /></a>
+  <img src="https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=black" alt="React 19" />
+  <img src="https://img.shields.io/badge/Vite-6-646cff?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/SIH-2026-orange?style=for-the-badge" alt="SIH 2026" />
+  <img src="https://img.shields.io/badge/TailwindCSS-3.4-38bdf8?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" />
+</p>
+
+HRIDAY is a **Sovereign Industrial AI Workbench** for Smart India Hackathon (Problem Statement ID: SIH26117). The product is designed as a local-first multimodal workbench for confidential industrial knowledge work, with deterministic Brownfield P&ID and maintenance intelligence as a flagship specialist capability.
+
+🔗 **Live Production Application:** [https://frontend-swart-five-99.vercel.app](https://frontend-swart-five-99.vercel.app)
+
+---
+
+## 📸 Interface Showcase
+
+| Industrial Engineering Workbench (`#workbench`) | Product Story & Mission Architecture |
+| :---: | :---: |
+| ![HRIDAY Engineering Workbench](assets/screenshots/hriday-workbench.png) | ![HRIDAY Product Story](assets/screenshots/hriday-overview.png) |
+
+---
 
 ## Experience
 
